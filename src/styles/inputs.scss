@@ -1,5 +1,12 @@
 @import './variables.scss';
 
 .default {
+  @extend .paragraph;
+  padding: 10px;
+  color: $grey-0;
+  border-radius: 3px;
+  border: 1px solid $grey-0;
+  background-color: $grey-2;
+
   &:focus {}
 }
