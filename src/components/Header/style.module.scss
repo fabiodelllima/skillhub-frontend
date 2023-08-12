@@ -1,18 +1,25 @@
 .header {
   width: 100%;
 
-  /* border: 4px dashed white; */
+  /* border: 2px dashed white; */
 }
 
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 20px;
+  padding: 40px;
 
   /* border: 2px dashed yellow; */
 }
 
 .imgContainer {
   /* border: 2px dashed deepskyblue; */
+}
+
+@media screen and (min-width: 600px) {
+  .header {
+    width: 1000px;
+    margin: 0 auto;
+  }
 }
