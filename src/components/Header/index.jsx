@@ -1,7 +1,10 @@
+import '../../styles/index.scss';
+import Logo from '../../assets/Logo.svg';
+
 export const Header = () => {
 	return (
 		<>
-			<h1>Kenzie Hub</h1>
+			<img src={Logo} alt='Logo' />
 		</>
 	);
 };
