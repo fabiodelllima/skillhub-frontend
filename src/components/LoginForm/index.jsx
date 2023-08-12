@@ -1,13 +1,35 @@
+import { useState } from 'react';
+import { Input } from '../Form/Input';
 import styles from './style.module.scss';
+
 export const LoginForm = () => {
+	const [inputValue, setInputValue] = useState('');
+
 	return (
 		<section className={styles.loginContainer}>
 			<form action='' className={styles.formContainer}>
 				<h1 className={styles.title}>Login</h1>
-				<label htmlFor=''>Email</label>
-				<input className={styles.input} type='text' name='' id='' />
-				<label htmlFor=''>Senha</label>
-				<input className={styles.input} type='password' name='' id='' />
+
+				<Input
+					label='Email'
+					type='text'
+					name='Email'
+					id='Email'
+					value={inputValue}
+					onChange={(e) => setInputValue(e.target.inputValue)}
+					className={styles.input}
+					required={true}
+				/>
+				<Input
+					label='Senha'
+					type='password'
+					name='Senha'
+					id='Senha'
+					value={inputValue}
+					onChange={(e) => setInputValue(e.target.inputValue)}
+					className={styles.input}
+					required={true}
+				/>
 				<button className={styles.buttonPrimary} type='submit'>
 					Entrar
 				</button>
