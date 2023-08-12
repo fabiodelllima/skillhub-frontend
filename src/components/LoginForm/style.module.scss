@@ -1,0 +1,64 @@
+@import '../../styles/index.scss';
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+
+  /* border: 2px dashed yellow; */
+
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 30px;
+    border-radius: 3px;
+    background-color: $grey-3;
+
+    .title {
+      @extend .title1;
+      padding: 10px 0;
+      text-align: center
+    }
+
+    .input {
+      @extend .default;
+    }
+
+    .buttonPrimary {
+      @extend .btn-primary;
+      width: 100%;
+    }
+  }
+
+  .buttonSecondary {
+    @extend .btn-disabled;
+    width: 100%;
+  }
+
+  .registerSubContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 0 30px 30px 30px;
+    border-radius: 3px;
+    background-color: $grey-3;
+
+    /* border: 2px dashed deepskyblue; */
+
+    .paragraph {
+      @extend .paragraph;
+      padding-bottom: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .loginContainer {
+    width: 400px;
+    margin: 0 auto;
+  }
+}
