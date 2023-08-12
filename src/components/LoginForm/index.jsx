@@ -9,7 +9,6 @@ export const LoginForm = () => {
 		<section className={styles.loginContainer}>
 			<form action='' className={styles.formContainer}>
 				<h1 className={styles.title}>Login</h1>
-
 				<Input
 					label='Email'
 					type='text'
