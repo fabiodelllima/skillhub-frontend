@@ -1,5 +1,5 @@
 import './styles/index.scss';
-import { LoginPage } from './components/pages/LoginPage';
+import { LoginPage } from './pages/LoginPage';
 
 const App = () => {
 	return (
