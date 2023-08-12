@@ -1,6 +1,6 @@
+import styles from './style.module.scss';
 import { useState } from 'react';
 import { Input } from '../Form/Input';
-import styles from './style.module.scss';
 
 export const LoginForm = () => {
 	const [inputValue, setInputValue] = useState('');
