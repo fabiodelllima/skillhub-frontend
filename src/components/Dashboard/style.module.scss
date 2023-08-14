@@ -1,0 +1,23 @@
+@import '../../styles/index.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  height: 130px;
+  padding: 20px;
+  border-top: 1px solid $grey-1;
+  border-bottom: 1px solid $grey-1;
+
+  .helloUser {
+    @extend .title1;
+    color: $grey-0;
+  }
+
+  .userModule {
+    @extend .headline;
+    color: $grey-1;
+  }
+}
