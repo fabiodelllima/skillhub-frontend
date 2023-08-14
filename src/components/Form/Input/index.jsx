@@ -4,7 +4,7 @@ export const Input = ({
 	label,
 	inputType,
 	inputValue,
-	setValue,
+	onChange,
 	placeholder,
 	className,
 	required,
@@ -17,7 +17,7 @@ export const Input = ({
 				name={id}
 				id={id}
 				value={inputValue}
-				onChange={(e) => setValue(e.target.inputValue)}
+				onChange={onChange}
 				placeholder={placeholder}
 				className={className}
 				required={required}

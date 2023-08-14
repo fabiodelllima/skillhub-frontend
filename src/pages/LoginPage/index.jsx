@@ -1,12 +1,14 @@
-import styles from './style.module.scss';
 import '../../styles/index.scss';
-import { Header } from '../../components/Header';
+import styles from './style.module.scss';
+import Logo from '../../assets/Logo.svg';
 import { LoginForm } from '../../components/LoginForm';
 
 export const LoginPage = () => {
 	return (
 		<>
-			<Header />
+			<header className={styles.header}>
+				<img src={Logo} alt='Logo' />
+			</header>
 			<main className={styles.main}>
 				<LoginForm />
 			</main>

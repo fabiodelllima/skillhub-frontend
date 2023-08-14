@@ -15,7 +15,7 @@ export const LoginForm = () => {
 					name='Email'
 					id='Email'
 					value={inputValue}
-					onChange={(e) => setInputValue(e.target.inputValue)}
+					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.input}
 					required={true}
 				/>
@@ -25,7 +25,7 @@ export const LoginForm = () => {
 					name='Senha'
 					id='Senha'
 					value={inputValue}
-					onChange={(e) => setInputValue(e.target.inputValue)}
+					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.input}
 					required={true}
 				/>
