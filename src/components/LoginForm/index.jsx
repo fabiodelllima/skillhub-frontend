@@ -1,6 +1,7 @@
 import styles from './style.module.scss';
 import { useState } from 'react';
 import { Input } from '../Form/Input';
+import { Link } from 'react-router-dom';
 
 export const LoginForm = () => {
 	const [inputValue, setInputValue] = useState('');
@@ -35,7 +36,9 @@ export const LoginForm = () => {
 			</form>
 			<div className={styles.registerSubContainer}>
 				<p className={styles.paragraph}>Ainda não possui uma conta?</p>
-				<button className={styles.buttonSecondary}>Cadastre-se</button>
+				<Link to='/register' className={styles.registerButtonContainer}>
+					<button className={styles.buttonSecondary}>Cadastre-se</button>
+				</Link>
 			</div>
 		</section>
 	);

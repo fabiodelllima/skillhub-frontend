@@ -34,7 +34,7 @@
 
   .buttonSecondary {
     @extend .btn-disabled;
-    width: 100%;
+    width: 100% !important;
   }
 
   .registerSubContainer {
@@ -52,6 +52,10 @@
     .paragraph {
       @extend .paragraph;
       padding-bottom: 10px;
+    }
+
+    .registerButtonContainer {
+      width: 100%;
     }
   }
 }
