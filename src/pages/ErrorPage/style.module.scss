@@ -1,0 +1,28 @@
+@import '../../styles/index.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .subContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%;
+    width: 400px;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: $grey-2;
+
+    .title {
+      @extend .title1;
+    }
+
+    .subTitle {
+      @extend .paragraph;
+    }
+  }
+}
