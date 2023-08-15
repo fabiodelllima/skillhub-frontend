@@ -44,8 +44,8 @@ export const RegisterForm = () => {
 				<Input
 					label='Confirmar Senha'
 					type='password'
-					name='confirmpassword'
-					id='confirmpassword'
+					name='confirmPassword'
+					id='confirmPassword'
 					value={inputValue}
 					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.input}
@@ -53,7 +53,7 @@ export const RegisterForm = () => {
 				/>
 				<Input
 					label='Bio'
-					type='password'
+					type='text'
 					name='bio'
 					id='bio'
 					value={inputValue}
@@ -63,7 +63,7 @@ export const RegisterForm = () => {
 				/>
 				<Input
 					label='Contato'
-					type='password'
+					type='text'
 					name='contact'
 					id='contact'
 					value={inputValue}
@@ -73,8 +73,8 @@ export const RegisterForm = () => {
 				/>
 				<Select
 					label='Selecionar módulo'
-					name='module'
-					id='module'
+					name='courseModule'
+					id='courseModule'
 					value={inputValue}
 					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.select}
