@@ -1,26 +1,15 @@
 /* eslint-disable react/prop-types */
-export const Input = ({
-	id,
-	label,
-	inputType,
-	inputValue,
-	onChange,
-	placeholder,
-	className,
-	required,
-}) => {
+export const Input = ({ id, label, type, className, required, register }) => {
 	return (
 		<>
-			<label htmlFor={id}>{label}</label>
+			<label>{label}</label>
 			<input
-				type={inputType}
+				type={type}
 				name={id}
 				id={id}
-				value={inputValue}
-				onChange={onChange}
-				placeholder={placeholder}
 				className={className}
 				required={required}
+				{...register}
 			/>
 		</>
 	);

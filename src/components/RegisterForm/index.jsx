@@ -1,14 +1,19 @@
 import styles from './style.module.scss';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Input } from '../Form/Input';
 import { Select } from '../Form/Select';
 
 export const RegisterForm = () => {
-	const [inputValue, setInputValue] = useState('');
+	const { register, handleSubmit } = useForm();
+
+	const submit = (formData) => {
+		console.log(formData);
+		console.table(formData);
+	};
 
 	return (
 		<section className={styles.loginContainer}>
-			<form action='' className={styles.formContainer}>
+			<form onSubmit={handleSubmit(submit)} className={styles.formContainer}>
 				<h1 className={styles.title}>Crie sua conta</h1>
 				{/* <p>Rápido e grátis, vamos nessa</p> */}
 				<Input
@@ -16,69 +21,62 @@ export const RegisterForm = () => {
 					type='text'
 					name='name'
 					id='name'
-					value={inputValue}
-					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.input}
 					required={true}
+					register={register('name')}
 				/>
 				<Input
 					label='Email'
-					type='text'
+					type='email'
 					name='email'
 					id='email'
-					value={inputValue}
-					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.input}
 					required={true}
+					register={register('email')}
 				/>
 				<Input
 					label='Senha'
 					type='password'
 					name='password'
 					id='password'
-					value={inputValue}
-					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.input}
 					required={true}
+					register={register('password')}
 				/>
 				<Input
 					label='Confirmar Senha'
 					type='password'
 					name='confirmPassword'
 					id='confirmPassword'
-					value={inputValue}
-					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.input}
 					required={true}
+					register={register('confirmPassword')}
 				/>
 				<Input
 					label='Bio'
 					type='text'
 					name='bio'
 					id='bio'
-					value={inputValue}
-					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.input}
 					required={true}
+					register={register('bio')}
 				/>
 				<Input
 					label='Contato'
 					type='text'
 					name='contact'
 					id='contact'
-					value={inputValue}
-					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.input}
 					required={true}
+					register={register('contact')}
 				/>
 				<Select
 					label='Selecionar módulo'
 					name='courseModule'
 					id='courseModule'
-					value={inputValue}
-					onChange={(e) => setInputValue(e.target.value)}
 					className={styles.select}
 					required={true}
+					register={register('courseModule')}
 				/>
 				<button className={styles.buttonPrimaryNegative} type='submit'>
 					Cadastrar

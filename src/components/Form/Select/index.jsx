@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-export const Select = ({ id, label, type, onChange, className, required }) => {
+export const Select = ({ id, label, type, className, required, register }) => {
 	return (
 		<>
 			<label htmlFor={id}>{label}</label>
@@ -7,9 +7,9 @@ export const Select = ({ id, label, type, onChange, className, required }) => {
 				name={id}
 				id={id}
 				value={type}
-				onChange={onChange}
 				className={className}
 				required={required}
+				{...register}
 			>
 				<option value='firstModule'>Primeiro Módulo</option>
 			</select>
