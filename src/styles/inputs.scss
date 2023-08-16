@@ -3,6 +3,7 @@
 .default {
   @extend .paragraph;
   padding: 10px;
+  margin: -8px 0 4px 0;
   color: $grey-0;
   border-radius: 3px;
   border: none;
