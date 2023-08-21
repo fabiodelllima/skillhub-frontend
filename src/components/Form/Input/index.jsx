@@ -1,5 +1,15 @@
 /* eslint-disable react/prop-types */
-export const Input = ({ id, label, type, className, required, register }) => {
+// import styles from './style.module.scss';
+
+export const Input = ({
+	id,
+	label,
+	type,
+	className,
+	required,
+	register,
+	error,
+}) => {
 	return (
 		<>
 			<label>{label}</label>
@@ -11,6 +21,7 @@ export const Input = ({ id, label, type, className, required, register }) => {
 				required={required}
 				{...register}
 			/>
+			{error ? <p>{error.message}</p> : null}
 		</>
 	);
 };

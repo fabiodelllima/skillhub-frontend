@@ -51,3 +51,22 @@
     background-color: $grey-2;
   }
 }
+
+.btn-disabled-reverse {
+  width: 90px;
+  height: 48px;
+  padding: 0px 22px;
+  font-family: $font-primary;
+  font-size: 1rem;
+  font-weight: 500;
+  color: $white;
+  border-radius: 4px;
+  border: 1px solid $grey-2;
+  background-color: $grey-2;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $grey-1;
+    border: 1px solid $grey-1;
+  }
+}

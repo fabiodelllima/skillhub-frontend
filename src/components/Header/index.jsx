@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import styles from './style.module.scss';
 import '../../styles/index.scss';
+import styles from './style.module.scss';
 import Logo from '../../assets/Logo.svg';
+import { Link } from 'react-router-dom';
 
 export const Header = ({ buttonText }) => {
 	return (
@@ -10,7 +11,9 @@ export const Header = ({ buttonText }) => {
 				<div className={styles.imgContainer}>
 					<img src={Logo} alt='Logo' />
 				</div>
-				<button className={styles.buttonHeader}>{buttonText}</button>
+				<Link to='/'>
+					<button className={styles.buttonHeader}>{buttonText}</button>
+				</Link>
 			</div>
 		</header>
 	);

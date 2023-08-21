@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import { HomePage } from '../pages/HomePage';
-import { RegisterPage } from '../pages/RegisterPage';
 import { LoginPage } from '../pages/LoginPage';
+import { RegisterPage } from '../pages/RegisterPage';
+import { UserPage } from '../pages/UserPage';
 import { ErrorPage } from '../pages/ErrorPage';
 
 export const RoutesMain = () => {
@@ -10,7 +10,7 @@ export const RoutesMain = () => {
 			<Routes>
 				<Route path='/' element={<LoginPage />} />
 				<Route path='/register' element={<RegisterPage />} />
-				<Route path='/home' element={<HomePage />} />
+				<Route path='/user' element={<UserPage />} />
 				<Route path='*' element={<ErrorPage />} />
 			</Routes>
 		</>

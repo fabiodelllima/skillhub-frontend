@@ -1,0 +1,7 @@
+@import '../../../styles/index.scss';
+
+.errorMessage {
+  @extend .error;
+  color: $grey-1;
+  padding: 0 8px;
+}
