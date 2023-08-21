@@ -1,27 +1,14 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-// import styles from './style.module.scss';
+import styles from './style.module.scss';
+import { forwardRef } from 'react';
 
-export const Input = ({
-	id,
-	label,
-	type,
-	className,
-	required,
-	register,
-	error,
-}) => {
+export const Input = forwardRef(({ label, error, ...rest }, ref) => {
 	return (
-		<>
+		<div className={styles.container}>
 			<label>{label}</label>
-			<input
-				type={type}
-				name={id}
-				id={id}
-				className={className}
-				required={required}
-				{...register}
-			/>
-			{error ? <p>{error.message}</p> : null}
-		</>
+			<input ref={ref} {...rest} />
+			{error ? <p className={styles.errorMessage}>{error.message}</p> : null}
+		</div>
 	);
-};
+});

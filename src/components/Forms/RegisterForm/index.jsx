@@ -31,76 +31,62 @@ export const RegisterForm = () => {
 					name='name'
 					id='name'
 					className={styles.input}
-					required={true}
-					register={register('name')}
+					{...register('name')}
 					error={errors.name}
 				/>
-				{errors.name?.message}
 				<Input
 					label='Email'
 					type='email'
 					name='email'
 					id='email'
 					className={styles.input}
-					required={true}
-					register={register('email')}
+					{...register('email')}
 					error={errors.email}
 				/>
-				{errors.email?.message}
 				<Input
 					label='Senha'
 					type='password'
 					name='password'
 					id='password'
 					className={styles.input}
-					required={true}
-					register={register('password')}
+					{...register('password')}
 					error={errors.password}
 				/>
-				{errors.password?.message}
 				<Input
 					label='Confirmar Senha'
 					type='password'
 					name='confirmPassword'
 					id='confirmPassword'
 					className={styles.input}
-					required={true}
-					register={register('confirmPassword')}
+					{...register('confirmPassword')}
 					error={errors.confirmPassword}
 				/>
-				{errors.confirmPassword?.message}
 				<Input
 					label='Bio'
 					type='text'
 					name='bio'
 					id='bio'
 					className={styles.input}
-					required={true}
-					register={register('bio')}
+					{...register('bio')}
 					error={errors.bio}
 				/>
-				{errors.bio?.message}
 				<Input
 					label='Contato'
 					type='text'
 					name='contact'
 					id='contact'
 					className={styles.input}
-					required={true}
-					register={register('contact')}
+					{...register('contact')}
 					error={errors.contact}
 				/>
-				{errors.contact?.message}
 				<Select
 					label='Selecionar módulo'
-					name='courseModule'
-					id='courseModule'
+					name='course_module'
+					id='course_module'
 					className={styles.select}
-					required={true}
-					register={register('courseModule')}
-					error={errors.courseModule}
+					{...register('course_module')}
+					error={errors.course_module}
 				/>
-				{errors.courseModule?.message}
 				<button className={styles.buttonPrimaryNegative} type='submit'>
 					Cadastrar
 				</button>

@@ -1,18 +1,15 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
-export const Select = ({ id, label, type, className, required, register }) => {
+import styles from './style.module.scss';
+import { forwardRef } from 'react';
+
+export const Select = forwardRef(({ label, ...rest }, ref) => {
 	return (
-		<>
-			<label htmlFor={id}>{label}</label>
-			<select
-				name={id}
-				id={id}
-				value={type}
-				className={className}
-				required={required}
-				{...register}
-			>
+		<div className={styles.container}>
+			<label htmlFor={rest.id}>{label}</label>
+			<select ref={ref} {...rest}>
 				<option value='firstModule'>Primeiro Módulo</option>
 			</select>
-		</>
+		</div>
 	);
-};
+});

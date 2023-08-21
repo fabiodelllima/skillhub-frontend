@@ -18,26 +18,12 @@ export const registerFormSchema = z
 				/[!@#$%^&*()_+{}\\[\]:;<>,.?~\\/]/,
 				'É necessário um caracter especial'
 			),
-		confirmPassword: z
-			.string()
-			.nonempty('Confirmar a senha é obrigatório')
-			.regex(),
-		bio: z
-			.string()
-			.nonempty('A bio é obrigatória')
-			.min(1, 'É necessário um caractere'),
-		contact: z
-			.string()
-			.nonempty('O nome é obrigatório')
-			.min(1, 'É necessário um caractere'),
-		// courseModule: z.string().nonempty('O nome é obrigatório'),
+		confirmPassword: z.string().nonempty('Confirmar a senha é obrigatório'),
+		bio: z.string().nonempty('A bio é obrigatória'),
+		contact: z.string().nonempty('O nome é obrigatório'),
+		course_module: z.string(),
 	})
-	.refine(({ password, confirmPassword }) => {
-		return (
-			password === confirmPassword,
-			{
-				message: 'As senhas não correspondem',
-				path: ['confirmPassword'],
-			}
-		);
+	.refine(({ password, confirmPassword }) => password === confirmPassword, {
+		message: 'As senhas não correspondem',
+		path: ['confirmPassword'],
 	});
