@@ -1,5 +1,5 @@
 import styles from './style.module.scss';
-import { Input } from '../Form/Input';
+import { Input } from '../Input';
 import { Link } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';

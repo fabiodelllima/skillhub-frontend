@@ -1,4 +1,4 @@
-@import '../../styles/index.scss';
+@import '../../../styles/index.scss';
 
 .loginContainer {
   display: flex;
@@ -26,19 +26,15 @@
       @extend .default;
     }
 
-    .select {
-      @extend .default;
-    }
-
-    .buttonPrimaryNegative {
-      @extend .btn-primary-negative;
+    .buttonPrimary {
+      @extend .btn-primary;
       width: 100%;
     }
   }
 
   .buttonSecondary {
     @extend .btn-disabled;
-    width: 100%;
+    width: 100% !important;
   }
 
   .registerSubContainer {
@@ -56,6 +52,10 @@
     .paragraph {
       @extend .paragraph;
       padding-bottom: 10px;
+    }
+
+    .registerButtonContainer {
+      width: 100%;
     }
   }
 }

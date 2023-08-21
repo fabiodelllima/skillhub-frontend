@@ -1,7 +1,7 @@
 import '../../styles/index.scss';
 import styles from './style.module.scss';
 import Logo from '../../assets/Logo.svg';
-import { LoginForm } from '../../components/LoginForm';
+import { LoginForm } from '../../components/Forms/LoginForm';
 
 export const LoginPage = () => {
 	return (

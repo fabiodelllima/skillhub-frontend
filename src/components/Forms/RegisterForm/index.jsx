@@ -1,7 +1,7 @@
 import styles from './style.module.scss';
 import { useForm } from 'react-hook-form';
-import { Input } from '../Form/Input';
-import { Select } from '../Form/Select';
+import { Input } from '../Input';
+import { Select } from '../Select';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerFormSchema } from './registerFormSchema';
 
