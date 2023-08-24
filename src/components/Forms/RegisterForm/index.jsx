@@ -114,10 +114,18 @@ export const RegisterForm = () => {
 					error={errors.course_module}
 					disabled={loading}
 				>
-					<option value='firstModule'>Primeiro Módulo</option>
-					<option value='secondModule'>Segundo Módulo</option>
-					<option value='thirdModule'>Terceiro Módulo</option>
-					<option value='fouthModule'>Quarto Módulo</option>
+					<option value='Primeiro módulo  (Introdução ao Frontend)'>
+						Primeiro Módulo
+					</option>
+					<option value='Segundo módulo (Frontend Avançado)'>
+						Segundo Módulo
+					</option>
+					<option value='Terceiro módulo (Introdução ao Backend)'>
+						Terceiro Módulo
+					</option>
+					<option value='Quarto módulo (Backend Avançado)'>
+						Quarto Módulo
+					</option>
 				</Select>
 				<button
 					className={styles.buttonPrimary}
