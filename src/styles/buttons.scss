@@ -12,6 +12,7 @@
 
   &:hover {
     cursor: pointer;
+    border: 1px solid $color-primary-focus;
     background-color: $color-primary-focus;
   }
 }
@@ -29,8 +30,8 @@
   background-color: $color-primary-negative;
 
   &:hover {
-    cursor: pointer;
-    filter: brightness(1.2);
+    cursor: not-allowed;
+    // filter: brightness(1.2);
   }
 }
 

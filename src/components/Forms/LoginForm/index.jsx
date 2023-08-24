@@ -1,11 +1,15 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import styles from './style.module.scss';
 import { Input } from '../Input';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { loginFormSchema } from './loginFormSchema';
+import { useState } from 'react';
+import { api } from '../../../services/api';
 
-export const LoginForm = () => {
+export const LoginForm = ({ setUser }) => {
 	const {
 		register,
 		handleSubmit,
@@ -14,9 +18,31 @@ export const LoginForm = () => {
 		resolver: zodResolver(loginFormSchema),
 	});
 
+	const navigate = useNavigate();
+
+	const [loading, setLoading] = useState(false);
+
+	const userLogin = async (formData) => {
+		try {
+			setLoading(true);
+			const { data } = await api.post('/sessions', formData);
+			console.table(data);
+			setUser(data.user);
+			localStorage.setItem('@TOKEN', data.token);
+			navigate('/user');
+		} catch (error) {
+			console.log(error);
+			if (error.response?.message === 'Incorrect password') {
+				alert('O email e senha não correspondem');
+			}
+		} finally {
+			setLoading(false);
+		}
+	};
+
 	const submit = (formData) => {
-		console.log(formData);
 		console.table(formData);
+		userLogin(formData);
 	};
 
 	return (
@@ -24,23 +50,21 @@ export const LoginForm = () => {
 			<form onSubmit={handleSubmit(submit)} className={styles.formContainer}>
 				<h1 className={styles.title}>Login</h1>
 				<Input
-					label='Email'
+					label='E-mail'
 					type='text'
-					name='Email'
-					id='Email'
+					name='email'
+					id='email'
 					className={styles.input}
-					required={true}
-					register={register('email')}
+					{...register('email')}
 					error={errors.email}
 				/>
 				<Input
 					label='Senha'
 					type='password'
-					name='Senha'
-					id='Senha'
+					name='password'
+					id='password'
 					className={styles.input}
-					required={true}
-					register={register('password')}
+					{...register('password')}
 					error={errors.password}
 				/>
 				<button className={styles.buttonPrimary} type='submit'>

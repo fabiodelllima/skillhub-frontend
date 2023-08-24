@@ -15,4 +15,8 @@
   &:active {
     border: 1px solid $grey-0;
   }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }

@@ -16,7 +16,7 @@ export const registerFormSchema = z
 			.regex(/[0-9]+/, 'É necessário conter um número')
 			.regex(
 				/[!@#$%^&*()_+{}\\[\]:;<>,.?~\\/]/,
-				'É necessário um caracter especial'
+				'É necessário um caractere especial'
 			),
 		confirmPassword: z.string().nonempty('Confirmar a senha é obrigatório'),
 		bio: z.string().nonempty('A bio é obrigatória'),

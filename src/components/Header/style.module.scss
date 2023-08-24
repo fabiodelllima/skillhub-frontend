@@ -3,30 +3,23 @@
 .header {
   width: 100%;
 
-  /* border: 2px dashed white; */
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 40px 20px;
-
-  /* border: 2px dashed yellow; */
-}
-
-.imgContainer {
-  /* border: 2px dashed deepskyblue; */
-}
-
-.buttonHeader {
-  @extend .btn-disabled-reverse;
-}
-
-@media screen and (min-width: 600px) {
-  .header {
-    width: 800px;
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     margin: 0 auto;
+    padding: 40px 20px;
+
+    .buttonHeader {
+      @extend .btn-disabled-reverse;
+    }
+
+    @media screen and (min-width: 600px) {
+      width: 400px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
   }
 }

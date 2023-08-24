@@ -3,10 +3,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 10px;
-
-  // border: 1px dashed yellow;
+  gap: 8px;
+  height: 80px;
 
   .errorMessage {
     @extend .error;

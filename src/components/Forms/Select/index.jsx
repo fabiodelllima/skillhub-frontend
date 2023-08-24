@@ -3,12 +3,12 @@
 import styles from './style.module.scss';
 import { forwardRef } from 'react';
 
-export const Select = forwardRef(({ label, ...rest }, ref) => {
+export const Select = forwardRef(({ children, label, ...rest }, ref) => {
 	return (
 		<div className={styles.container}>
 			<label htmlFor={rest.id}>{label}</label>
 			<select ref={ref} {...rest}>
-				<option value='firstModule'>Primeiro Módulo</option>
+				{children}
 			</select>
 		</div>
 	);
