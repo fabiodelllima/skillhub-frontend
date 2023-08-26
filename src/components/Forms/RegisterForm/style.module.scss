@@ -16,8 +16,16 @@
 
     .title {
       @extend .title1;
-      padding: 10px 0;
-      text-align: center
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    .subTitle {
+      @extend .headline;
+      text-align: center;
+      font-size: 1rem;
+      color: $grey-1;
+      padding: 10px 0 20px 0;
     }
 
     .input {

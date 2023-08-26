@@ -44,9 +44,10 @@ export const RegisterForm = () => {
 		<section className={styles.loginContainer}>
 			<form onSubmit={handleSubmit(submit)} className={styles.formContainer}>
 				<h1 className={styles.title}>Crie sua conta</h1>
-				{/* <p>Rápido e grátis, vamos nessa</p> */}
+				<p className={styles.subTitle}>Rápido e grátis, vamos nessa</p>
 				<Input
 					label='Nome'
+					placeholder='Digite aqui seu nome'
 					type='text'
 					name='name'
 					id='name'
@@ -57,6 +58,7 @@ export const RegisterForm = () => {
 				/>
 				<Input
 					label='Email'
+					placeholder='Digite aqui seu email'
 					type='email'
 					name='email'
 					id='email'
@@ -67,6 +69,7 @@ export const RegisterForm = () => {
 				/>
 				<Input
 					label='Senha'
+					placeholder='Digite aqui sua senha'
 					type='password'
 					name='password'
 					id='password'
@@ -77,6 +80,7 @@ export const RegisterForm = () => {
 				/>
 				<Input
 					label='Confirmar Senha'
+					placeholder='Digite novamente sua senha'
 					type='password'
 					name='confirmPassword'
 					id='confirmPassword'
@@ -87,6 +91,7 @@ export const RegisterForm = () => {
 				/>
 				<Input
 					label='Bio'
+					placeholder='Fale sobre você'
 					type='text'
 					name='bio'
 					id='bio'
@@ -97,6 +102,7 @@ export const RegisterForm = () => {
 				/>
 				<Input
 					label='Contato'
+					placeholder='Opção de contato'
 					type='text'
 					name='contact'
 					id='contact'
