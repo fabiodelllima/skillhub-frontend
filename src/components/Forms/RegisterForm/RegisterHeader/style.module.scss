@@ -1,0 +1,25 @@
+@import '../../../../styles/index.scss';
+
+.header {
+  width: 100%;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+
+    .buttonHeader {
+      @extend .btn-disabled-reverse;
+    }
+
+    @media screen and (min-width: 600px) {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+  }
+}
