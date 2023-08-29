@@ -8,7 +8,6 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
-
 	const navigate = useNavigate();
 
 	const userLogout = () => {
@@ -26,13 +25,12 @@ export const UserProvider = ({ children }) => {
 			reset();
 			navigate('/user');
 		} catch (error) {
-			if (error.response?.data.message === 'Incorrect password') {
-				toast.error('O email e senha não correspondem');
-			} else if (
-				error.response?.data.message ===
-				'Incorrect email / password combination'
-			) {
-				toast.error('O e-mail ou senha estão incorretos');
+			console.log(error.response.data.message);
+			console.log(error);
+			if (![404, 500].includes(error.response.status)) {
+				toast.error('O email ou a senha não correspondem');
+			} else {
+				toast.error('Servidor com problemas');
 			}
 		} finally {
 			setLoading(false);
@@ -45,6 +43,7 @@ export const UserProvider = ({ children }) => {
 			await api.post('/users', formData);
 			toast.success('Cadastro realizado!');
 		} catch (error) {
+			console.log(error);
 			if (error.response?.data.message === 'Email already exists') {
 				toast.error('Usuário já cadastrado!');
 			}

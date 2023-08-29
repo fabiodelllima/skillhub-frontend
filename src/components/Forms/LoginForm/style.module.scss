@@ -27,6 +27,12 @@
     .buttonPrimary {
       @extend .btn-primary;
       width: 100%;
+
+      &:disabled {
+        @extend .btn-primary-negative;
+        cursor: not-allowed;
+        width: 100%;
+      }
     }
   }
 

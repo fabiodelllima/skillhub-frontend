@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import { loginFormSchema } from './loginFormSchema';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../../providers/UserContext';
-import { toast } from 'react-toastify';
 
 export const LoginForm = () => {
 	const {
@@ -50,8 +49,12 @@ export const LoginForm = () => {
 					{...register('password')}
 					error={errors.password}
 				/>
-				<button className={styles.buttonPrimary} type='submit'>
-					Entrar
+				<button
+					className={styles.buttonPrimary}
+					type='submit'
+					disabled={loading}
+				>
+					{loading ? 'Acessando...' : 'Entrar'}
 				</button>
 			</form>
 			<div className={styles.registerSubContainer}>
