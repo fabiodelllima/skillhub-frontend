@@ -1,8 +1,8 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../services/api';
+import { toast } from 'react-toastify';
 
 export const UserContext = createContext({});
 
@@ -21,15 +21,18 @@ export const UserProvider = ({ children }) => {
 		try {
 			setLoading(true);
 			const { data } = await api.post('/sessions', formData);
-			console.table(data);
 			setUser(data.user);
 			localStorage.setItem('@TOKEN', data.token);
 			reset();
 			navigate('/user');
 		} catch (error) {
-			console.log(error);
-			if (error.response?.message === 'Incorrect password') {
-				alert('O email e senha não correspondem');
+			if (error.response?.data.message === 'Incorrect password') {
+				toast.error('O email e senha não correspondem');
+			} else if (
+				error.response?.data.message ===
+				'Incorrect email / password combination'
+			) {
+				toast.error('O e-mail ou senha estão incorretos');
 			}
 		} finally {
 			setLoading(false);
@@ -40,11 +43,10 @@ export const UserProvider = ({ children }) => {
 		try {
 			setLoading(true);
 			await api.post('/users', formData);
-			alert('Cadastro realizado!');
+			toast.success('Cadastro realizado!');
 		} catch (error) {
-			console.log(error);
 			if (error.response?.data.message === 'Email already exists') {
-				alert('Usuário já cadastrado!');
+				toast.error('Usuário já cadastrado!');
 			}
 		} finally {
 			setLoading(false);
@@ -52,10 +54,8 @@ export const UserProvider = ({ children }) => {
 	};
 
 	return (
-		<UserContext.UserProvider
-			value={{ user, userLogout, userLogin, userRegister }}
-		>
+		<UserContext.Provider value={{ user, userLogout, userLogin, userRegister }}>
 			{children}
-		</UserContext.UserProvider>
+		</UserContext.Provider>
 	);
 };

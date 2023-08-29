@@ -8,12 +8,14 @@ import { useForm } from 'react-hook-form';
 import { loginFormSchema } from './loginFormSchema';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../../providers/UserContext';
+import { toast } from 'react-toastify';
 
 export const LoginForm = () => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm({
 		resolver: zodResolver(loginFormSchema),
 	});
@@ -23,8 +25,7 @@ export const LoginForm = () => {
 	const { userLogin } = useContext(UserContext);
 
 	const submit = (formData) => {
-		console.table(formData);
-		userLogin(formData, setLoading);
+		userLogin(formData, setLoading, reset);
 	};
 
 	return (
