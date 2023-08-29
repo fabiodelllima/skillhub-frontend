@@ -4,8 +4,8 @@ import { Input } from '../Input';
 import { Select } from '../Select';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerFormSchema } from './registerFormSchema';
-import { api } from '../../../services/api';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../../providers/UserContext';
 
 export const RegisterForm = () => {
 	const {
@@ -18,26 +18,10 @@ export const RegisterForm = () => {
 
 	const [loading, setLoading] = useState(false);
 
-	const userRegister = async (formData) => {
-		try {
-			setLoading(true);
-			await api.post('/users', formData);
-			alert('Cadastro realizado!');
-		} catch (error) {
-			console.log(error);
-			if (error.response?.data.message === 'Email already exists') {
-				alert('Usuário já cadastrado!');
-			}
-		} finally {
-			setLoading(false);
-		}
-	};
+	const { userRegister } = useContext(UserContext);
 
 	const submit = (formData) => {
-		console.table(formData);
-		console.log(errors);
-
-		userRegister(formData);
+		userRegister(formData, setLoading);
 	};
 
 	return (

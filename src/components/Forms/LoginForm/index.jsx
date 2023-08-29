@@ -6,10 +6,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { loginFormSchema } from './loginFormSchema';
-import { useState } from 'react';
-import { api } from '../../../services/api';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../../providers/UserContext';
 
-export const LoginForm = ({ setUser }) => {
+export const LoginForm = () => {
 	const {
 		register,
 		handleSubmit,
@@ -18,31 +18,13 @@ export const LoginForm = ({ setUser }) => {
 		resolver: zodResolver(loginFormSchema),
 	});
 
-	const navigate = useNavigate();
-
 	const [loading, setLoading] = useState(false);
 
-	const userLogin = async (formData) => {
-		try {
-			setLoading(true);
-			const { data } = await api.post('/sessions', formData);
-			console.table(data);
-			setUser(data.user);
-			localStorage.setItem('@TOKEN', data.token);
-			navigate('/user');
-		} catch (error) {
-			console.log(error);
-			if (error.response?.message === 'Incorrect password') {
-				alert('O email e senha não correspondem');
-			}
-		} finally {
-			setLoading(false);
-		}
-	};
+	const { userLogin } = useContext(UserContext);
 
 	const submit = (formData) => {
 		console.table(formData);
-		userLogin(formData);
+		userLogin(formData, setLoading);
 	};
 
 	return (

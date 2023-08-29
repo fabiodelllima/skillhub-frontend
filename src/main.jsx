@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './styles/index.scss';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from './providers/Context.jsx';
+import { UserProvider } from './providers/UserContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		<Provider>
-			<BrowserRouter>
+		<BrowserRouter>
+			<UserProvider>
 				<App />
-			</BrowserRouter>
-		</Provider>
+			</UserProvider>
+		</BrowserRouter>
 	</React.StrictMode>
 );

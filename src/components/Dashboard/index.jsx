@@ -1,8 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useContext } from 'react';
 import styles from './style.module.scss';
+import { UserContext } from '../../providers/UserContext';
 
-export const Dashboard = ({ user }) => {
+export const Dashboard = () => {
+	const { user } = useContext(UserContext);
+
 	const inDevelopmentText = 'Que pena! Estamos em desenvolvimento :(';
 	const inDevelopmentSubText =
 		'Nossa aplicação está em desenvolvimento, em breve teremos novidades.';

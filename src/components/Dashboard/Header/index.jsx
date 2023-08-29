@@ -4,8 +4,12 @@ import '../../../styles/index.scss';
 import styles from './style.module.scss';
 import Logo from '../../../assets/Logo.svg';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../../providers/UserContext';
 
-export const Header = ({ buttonText, userLogout }) => {
+export const Header = ({ buttonText }) => {
+	const { userLogout } = useContext(UserContext);
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.container}>
