@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import styles from './style.module.scss';
 import { Input } from '../Input';
 import { Link, useNavigate } from 'react-router-dom';

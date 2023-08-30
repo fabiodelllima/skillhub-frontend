@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import '../../../../styles/index.scss';
 import styles from './style.module.scss';
 import Logo from '../../../../assets/Logo.svg';

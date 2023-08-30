@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import { useContext } from 'react';
 import styles from './style.module.scss';
 import { UserContext } from '../../providers/UserContext';
