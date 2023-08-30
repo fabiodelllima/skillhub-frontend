@@ -8,13 +8,14 @@ import { Loading } from './components/Loading';
 
 const App = () => {
 	const { loading } = useContext(UserContext);
+
 	return (
 		<>
 			{loading ? <Loading /> : <RoutesMain />}
 			<ToastContainer
 				position='bottom-left'
 				autoClose={2 * 1000}
-				hideProgressBar={true}
+				hideProgressBar={false}
 				newestOnTop={false}
 				closeOnClick
 				rtl={false}
