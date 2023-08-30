@@ -10,31 +10,19 @@ export const UserProvider = ({ children }) => {
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		const userId = localStorage.getItem('@USERID');
-		const token = localStorage.getItem('@TOKEN');
-
-		const getUser = async () => {
-			try {
-				setLoading(true);
-				const { data } = await api.get(`/profile`, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
-				setUser(data);
-				navigate('/user');
-			} catch (error) {
-				console.log(error);
-			} finally {
-				setLoading(false);
+	const userRegister = async (formData, setLoading) => {
+		try {
+			setLoading(true);
+			await api.post('/users', formData);
+			toast.success('Cadastro realizado!');
+		} catch (error) {
+			if (error.response?.data.message === 'Email already exists') {
+				toast.error('Usuário já cadastrado!');
 			}
-		};
-
-		if (userId && token) {
-			getUser();
+		} finally {
+			setLoading(false);
 		}
-	}, []);
+	};
 
 	const userLogin = async (formData, setLoading, reset) => {
 		try {
@@ -46,8 +34,6 @@ export const UserProvider = ({ children }) => {
 			reset();
 			navigate('/user');
 		} catch (error) {
-			console.log(error.response.data.message);
-			console.log(error);
 			if (![404, 500].includes(error.response.status)) {
 				toast.error('O email ou a senha não correspondem');
 			} else {
@@ -66,20 +52,30 @@ export const UserProvider = ({ children }) => {
 		toast.warning('Deslogando...');
 	};
 
-	const userRegister = async (formData, setLoading) => {
-		try {
-			setLoading(true);
-			await api.post('/users', formData);
-			toast.success('Cadastro realizado!');
-		} catch (error) {
-			console.log(error);
-			if (error.response?.data.message === 'Email already exists') {
-				toast.error('Usuário já cadastrado!');
+	useEffect(() => {
+		const userId = localStorage.getItem('@USERID');
+		const token = localStorage.getItem('@TOKEN');
+
+		const getUser = async () => {
+			try {
+				setLoading(true);
+				const { data } = await api.get(`/profile`, {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				});
+				setUser(data);
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setLoading(false);
 			}
-		} finally {
-			setLoading(false);
+		};
+
+		if (userId && token) {
+			getUser();
 		}
-	};
+	}, []);
 
 	return (
 		<UserContext.Provider
