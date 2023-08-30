@@ -4,12 +4,15 @@ import { RegisterPage } from '../pages/RegisterPage';
 import { UserPage } from '../pages/UserPage';
 import { ErrorPage } from '../pages/ErrorPage';
 import { PrivateRoutes } from './PrivateRoutes';
+import { PublicRoutes } from './PublicRoutes';
 
 export const RoutesMain = () => {
 	return (
 		<Routes>
-			<Route path='/' element={<LoginPage />} />
-			<Route path='/register' element={<RegisterPage />} />
+			<Route element={<PublicRoutes />}>
+				<Route path='/' element={<LoginPage />} />
+				<Route path='/register' element={<RegisterPage />} />
+			</Route>
 
 			<Route element={<PrivateRoutes />}>
 				<Route path='/user' element={<UserPage />} />
