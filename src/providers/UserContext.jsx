@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../services/api';
 import { toast } from 'react-toastify';
@@ -8,19 +7,41 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
+	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 
-	const userLogout = () => {
-		setUser(null);
-		navigate('/');
-		localStorage.removeItem('@TOKEN');
-	};
+	useEffect(() => {
+		const userId = localStorage.getItem('@USERID');
+		const token = localStorage.getItem('@TOKEN');
+
+		const getUser = async () => {
+			try {
+				setLoading(true);
+				const { data } = await api.get(`/profile`, {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				});
+				setUser(data);
+				navigate('/user');
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		if (userId && token) {
+			getUser();
+		}
+	}, []);
 
 	const userLogin = async (formData, setLoading, reset) => {
 		try {
 			setLoading(true);
 			const { data } = await api.post('/sessions', formData);
 			setUser(data.user);
+			localStorage.setItem('@USERID', data.user.id);
 			localStorage.setItem('@TOKEN', data.token);
 			reset();
 			navigate('/user');
@@ -35,6 +56,14 @@ export const UserProvider = ({ children }) => {
 		} finally {
 			setLoading(false);
 		}
+	};
+
+	const userLogout = () => {
+		setUser(null);
+		navigate('/');
+		localStorage.removeItem('@USERID');
+		localStorage.removeItem('@TOKEN');
+		toast.warning('Deslogando...');
 	};
 
 	const userRegister = async (formData, setLoading) => {
@@ -53,7 +82,9 @@ export const UserProvider = ({ children }) => {
 	};
 
 	return (
-		<UserContext.Provider value={{ user, userLogout, userLogin, userRegister }}>
+		<UserContext.Provider
+			value={{ loading, user, userLogout, userLogin, userRegister }}
+		>
 			{children}
 		</UserContext.Provider>
 	);
