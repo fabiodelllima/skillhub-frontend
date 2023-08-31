@@ -12,7 +12,7 @@ export const TechModal = ({ onClose }) => {
         </div>
       </header>
       <main className={styles.main}>
-        <form onSubmit='' className={styles.formContainer}>
+        <form className={styles.formContainer}>
           <Input label='Nome' className={styles.input} />
           <Select label='Selecionar status' className={styles.input} />
           <button type='submit' className={styles.buttonPrimary}>
