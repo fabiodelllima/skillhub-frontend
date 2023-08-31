@@ -13,23 +13,9 @@ export const TechContext = createContext({});
 
 export const TechProvider = ({ children }) => {
   const { user } = useContext(UserContext);
-
   const [techList, setTechList] = useState([]);
-
+  const [editTech, setEditTech] = useState(null);
   const navigate = useNavigate();
-
-  // READ
-  useEffect(() => {
-    const getTechs = async () => {
-      try {
-        const { data } = await api.get('');
-        console.table(data);
-      } catch (error) {
-        console.log(error);
-      }
-      getTechs();
-    };
-  }, []);
 
   // CREATE
   const createTech = async (formData) => {
@@ -47,16 +33,56 @@ export const TechProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.table(data);
 
+      console.table(data);
       navigate('/user');
+      setTechList({ ...techList, newTech });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // READ
+  useEffect(() => {
+    const getTechs = async () => {
+      try {
+        const { data } = await api.get('/profile');
+        console.table(data);
+        setTechList(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getTechs();
+  }, []);
+
+  // UPDATE
+
+  // DELETE
+  const deleteTech = async (deletingId) => {
+    try {
+      await api.delete(`/users/techs/${deletingId}`);
+
+      const newTechList = techList.filter(
+        (tech) => tech.id !== deletingId
+      );
+
+      setTechList(newTechList);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <TechContext.Provider value={{ techList, createTech }}>
+    <TechContext.Provider
+      value={{
+        techList,
+        createTech,
+        editTech,
+        setEditTech,
+        deleteTech,
+      }}
+    >
       {children}
     </TechContext.Provider>
   );
