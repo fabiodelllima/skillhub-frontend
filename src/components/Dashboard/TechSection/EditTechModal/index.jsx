@@ -2,30 +2,30 @@ import { useForm } from 'react-hook-form';
 import { Input } from '../../../Forms/Input';
 import { Select } from '../../../Forms/Select';
 import styles from './style.module.scss';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { TechContext } from '../../../../providers/TechContext';
 import { Navigate } from 'react-router-dom';
 
-export const EditTechModal = ({ onClose }) => {
-  const { register, handleSubmit } = useForm();
-  const { editTech, setEditTech } = useContext(TechContext);
+export const EditTechModal = () => {
+  const { updateTech, editTech, setEditTech } =
+    useContext(TechContext);
+
+  const { register, handleSubmit } = useForm({
+    values: {
+      status: editTech.status,
+    },
+  });
 
   const submit = (formData) => {
-    editTech(formData);
+    updateTech(formData);
   };
-
-  useEffect(() => {
-    return () => {
-      setEditTech(null);
-    };
-  }, []);
 
   return editTech ? (
     <div className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.title}>Editar tecnologia</h1>
         <div
-          onClick={onClose}
+          onClick={() => setEditTech(null)}
           className={styles.closeBtnContainer}
         >
           <span>X</span>
@@ -39,7 +39,8 @@ export const EditTechModal = ({ onClose }) => {
           <Input
             label='Nome'
             className={styles.input}
-            {...register('title')}
+            value={editTech.title}
+            readOnly={true}
           />
           <Select
             label='Selecionar status'

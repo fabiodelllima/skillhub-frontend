@@ -17,7 +17,6 @@ export const TechProvider = ({ children }) => {
   const [editTech, setEditTech] = useState(null);
   const navigate = useNavigate();
 
-  // CREATE
   const createTech = async (formData) => {
     try {
       const token = localStorage.getItem('@TOKEN');
@@ -42,13 +41,19 @@ export const TechProvider = ({ children }) => {
     }
   };
 
-  // READ
   useEffect(() => {
     const getTechs = async () => {
       try {
-        const { data } = await api.get('/profile');
+        const token = localStorage.getItem('@TOKEN');
+
+        const { data } = await api.get('/profile', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
         console.table(data);
-        setTechList(data);
+        setTechList(data.techs);
       } catch (error) {
         console.log(error);
       }
@@ -56,12 +61,45 @@ export const TechProvider = ({ children }) => {
     getTechs();
   }, []);
 
-  // UPDATE
+  const updateTech = async (formData) => {
+    try {
+      const token = localStorage.getItem('@TOKEN');
 
-  // DELETE
+      const { data } = await api.put(
+        `/users/techs/${editTech.id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const newTechList = techList.map((tech) => {
+        if (tech.id === editTech.id) {
+          return data;
+        } else {
+          return tech;
+        }
+      });
+
+      console.log('ATUALIZADO:', data);
+      setTechList(newTechList);
+    } catch (error) {
+      console.log(error);
+    }
+    setEditTech(null);
+  };
+
   const deleteTech = async (deletingId) => {
     try {
-      await api.delete(`/users/techs/${deletingId}`);
+      const token = localStorage.getItem('@TOKEN');
+
+      await api.delete(`/users/techs/${deletingId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       const newTechList = techList.filter(
         (tech) => tech.id !== deletingId
@@ -80,6 +118,7 @@ export const TechProvider = ({ children }) => {
         createTech,
         editTech,
         setEditTech,
+        updateTech,
         deleteTech,
       }}
     >

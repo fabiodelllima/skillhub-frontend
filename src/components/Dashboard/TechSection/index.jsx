@@ -3,10 +3,11 @@ import { TechCard } from './TechCard';
 import styles from './style.module.scss';
 import { CreateTechModal } from './CreateTechModal';
 import { TechContext } from '../../../providers/TechContext';
+import { EditTechModal } from './EditTechModal';
 
 export const TechSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { techList } = useContext(TechContext);
+  const { editTech, techList } = useContext(TechContext);
 
   const handleAddTechBtnClick = () => {
     setIsVisible(true);
@@ -29,11 +30,8 @@ export const TechSection = () => {
       </div>
       <div className={styles.cardListContainer}>
         <ul className={styles.cardList}>
-          <TechCard />
-          <TechCard />
-          <TechCard />
           {techList.map((tech) => (
-            <TechCard />
+            <TechCard key={tech.id} tech={tech} />
           ))}
         </ul>
       </div>
@@ -41,6 +39,8 @@ export const TechSection = () => {
       {isVisible ? (
         <CreateTechModal onClose={handleCloseModal} />
       ) : null}
+
+      {editTech ? <EditTechModal /> : null}
     </section>
   );
 };
