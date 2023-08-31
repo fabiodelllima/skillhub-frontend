@@ -5,7 +5,7 @@ import styles from './style.module.scss';
 import { useContext } from 'react';
 import { TechContext } from '../../../../providers/TechContext';
 
-export const TechModal = ({ onClose }) => {
+export const CreateTechModal = ({ onClose }) => {
   const { register, handleSubmit } = useForm();
   const { createTech } = useContext(TechContext);
 
