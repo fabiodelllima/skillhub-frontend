@@ -5,20 +5,28 @@ import { UserPage } from '../pages/UserPage';
 import { ErrorPage } from '../pages/ErrorPage';
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
+import { TechProvider } from '../providers/TechContext';
 
 export const RoutesMain = () => {
-	return (
-		<Routes>
-			<Route element={<PublicRoutes />}>
-				<Route path='/' element={<LoginPage />} />
-				<Route path='/register' element={<RegisterPage />} />
-			</Route>
+  return (
+    <Routes>
+      <Route element={<PublicRoutes />}>
+        <Route path='/' element={<LoginPage />} />
+        <Route path='/register' element={<RegisterPage />} />
+      </Route>
 
-			<Route element={<PrivateRoutes />}>
-				<Route path='/user' element={<UserPage />} />
-			</Route>
+      <Route element={<PrivateRoutes />}>
+        <Route
+          path='/user'
+          element={
+            <TechProvider>
+              <UserPage />
+            </TechProvider>
+          }
+        />
+      </Route>
 
-			<Route path='*' element={<ErrorPage />} />
-		</Routes>
-	);
+      <Route path='*' element={<ErrorPage />} />
+    </Routes>
+  );
 };
