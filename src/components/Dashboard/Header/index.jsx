@@ -1,25 +1,18 @@
-import '../../../styles/index.scss';
-import styles from './style.module.scss';
-import Logo from '../../../assets/Logo.svg';
-import { Link } from 'react-router-dom';
 import { useContext } from 'react';
+import styles from './style.module.scss';
 import { UserContext } from '../../../providers/UserContext';
 
-export const Header = ({ buttonText }) => {
-	const { userLogout } = useContext(UserContext);
+export const Header = () => {
+	const { user } = useContext(UserContext);
 
 	return (
-		<header className={styles.header}>
-			<div className={styles.container}>
-				<div className={styles.imgContainer}>
-					<img src={Logo} alt='Logo' />
+		<>
+			<section className={styles.container}>
+				<div className={styles.subContainer}>
+					<h1 className={styles.helloUser}>Olá, {user?.name}</h1>
+					<p className={styles.userModule}>{user?.course_module}</p>
 				</div>
-				<Link to='/'>
-					<button className={styles.buttonHeader} onClick={userLogout}>
-						{buttonText}
-					</button>
-				</Link>
-			</div>
-		</header>
+			</section>
+		</>
 	);
 };

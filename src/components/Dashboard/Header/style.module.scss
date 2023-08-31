@@ -1,26 +1,58 @@
 @import '../../../styles/index.scss';
 
-.header {
+.container {
   width: 100%;
+  border-top: 1px solid $grey-1;
+  border-bottom: 1px solid $grey-1;
 
-  .container {
+  .subContainer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-    margin: 0 auto;
-    padding: 40px 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    height: 130px;
+    padding: 20px;
+    max-width: 800px;
 
-    .buttonHeader {
-      @extend .btn-disabled-reverse;
+    .helloUser {
+      @extend .title1;
+      color: $grey-0;
+    }
+
+    .userModule {
+      @extend .headline;
+      color: $grey-1;
     }
 
     @media screen and (min-width: 600px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       max-width: 800px;
       margin: 0 auto;
-      padding: 40px 20px;
     }
+  }
+}
+
+.inDevelopmentContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  gap: 10px;
+
+  .inDevelopmentText {
+    @extend .title1;
+    color: $grey-0;
+  }
+
+  .inDevelopmentSubText {
+    @extend .headline;
+    color: $grey-0;
+  }
+
+  @media screen and (min-width: 600px) {
+    max-width: 800px;
+    margin: 0 auto;
   }
 }
