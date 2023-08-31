@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { TechCard } from './TechCard';
 import styles from './style.module.scss';
-import { TechModal } from './TechModal';
+import { CreateTechModal } from './CreateTechModal';
+import { TechContext } from '../../../providers/TechContext';
 
 export const TechSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { techList } = useContext(TechContext);
 
   const handleAddTechBtnClick = () => {
     setIsVisible(true);
@@ -30,10 +32,15 @@ export const TechSection = () => {
           <TechCard />
           <TechCard />
           <TechCard />
+          {techList.map((tech) => (
+            <TechCard />
+          ))}
         </ul>
       </div>
 
-      {isVisible ? <TechModal onClose={handleCloseModal} /> : null}
+      {isVisible ? (
+        <CreateTechModal onClose={handleCloseModal} />
+      ) : null}
     </section>
   );
 };
