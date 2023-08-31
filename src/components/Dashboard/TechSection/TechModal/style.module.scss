@@ -1,0 +1,64 @@
+@import '../../../../styles/index.scss';
+
+.container {
+  // border: 2px dashed yellow;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    padding-right: 30px;
+    background-color: $grey-2;
+
+    .title {
+      @extend .title1;
+      color: $grey-0;
+    }
+
+    .closeBtnContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background-color: transparent;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $grey-1;
+      }
+    }
+  }
+
+  .main {
+    background-color: $grey-3;
+
+    .formContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 30px;
+      border-radius: 3px;
+      background-color: $grey-3;
+
+      .input {
+        @extend .default;
+      }
+
+      .buttonPrimary {
+        @extend .btn-primary;
+        width: 100%;
+
+        &:disabled {
+          @extend .btn-primary-negative;
+          cursor: not-allowed;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
