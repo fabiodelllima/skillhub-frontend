@@ -1,12 +1,16 @@
-import { Dashboard } from '../../components/Dashboard';
+import { Navbar } from '../../components/Dashboard/Navbar';
 import { Header } from '../../components/Dashboard/Header';
+import { TechSection } from '../../components/Dashboard/TechSection';
 
 export const UserPage = () => {
 	return (
 		<>
-			<Header buttonText='Sair' />
+			<Navbar buttonText='Sair' />
+			<header>
+				<Header />
+			</header>
 			<main>
-				<Dashboard />
+				<TechSection />
 			</main>
 		</>
 	);
