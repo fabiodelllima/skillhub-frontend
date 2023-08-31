@@ -14,18 +14,9 @@ export const RoutesMain = () => {
         <Route path='/' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
       </Route>
-
       <Route element={<PrivateRoutes />}>
-        <Route
-          path='/user'
-          element={
-            <TechProvider>
-              <UserPage />
-            </TechProvider>
-          }
-        />
+        <Route path='/user' element={<UserPage />} />
       </Route>
-
       <Route path='*' element={<ErrorPage />} />
     </Routes>
   );
