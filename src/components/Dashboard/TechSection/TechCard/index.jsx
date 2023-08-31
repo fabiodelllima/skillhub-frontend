@@ -1,4 +1,5 @@
 import styles from './style.module.scss';
+import { MdEdit, MdDelete } from 'react-icons/md';
 
 export const TechCard = () => {
   return (
@@ -8,8 +9,12 @@ export const TechCard = () => {
       </div>
       <div className={styles.detailsContainer}>
         <p>Avançado</p>
-        <button>Editar</button>
-        <button>Excluir</button>
+        <button title='Editar tecnologia' aria-label='edit'>
+          <MdEdit />
+        </button>
+        <button title='Excluir tecnologia' aria-label='delete'>
+          <MdDelete />
+        </button>
       </div>
     </li>
   );
