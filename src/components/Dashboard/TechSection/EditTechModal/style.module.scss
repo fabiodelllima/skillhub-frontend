@@ -1,16 +1,10 @@
 @import '../../../../styles/index.scss';
 
 .container {
-  // border: 2px dashed yellow;
+  @extend .modalContainer;
 
   .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    padding-right: 30px;
-    background-color: $grey-2;
+    @extend .modalHeader;
 
     .title {
       @extend .title1;
@@ -33,7 +27,7 @@
   }
 
   .main {
-    background-color: $grey-3;
+    @extend .modalMain;
 
     .formContainer {
       display: flex;
@@ -47,6 +41,11 @@
 
       .input {
         @extend .default;
+
+        &:focus,
+        &:active {
+          border: 1px solid transparent;
+        }
       }
 
       .buttonPrimary {
