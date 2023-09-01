@@ -41,6 +41,7 @@ export const EditTechModal = () => {
             className={styles.input}
             value={editTech.title}
             readOnly={true}
+            disabled={true}
           />
           <Select
             label='Selecionar status'
