@@ -3,16 +3,18 @@ import styles from './style.module.scss';
 import { UserContext } from '../../../providers/UserContext';
 
 export const Header = () => {
-	const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
-	return (
-		<>
-			<section className={styles.container}>
-				<div className={styles.subContainer}>
-					<h1 className={styles.helloUser}>Olá, {user?.name}</h1>
-					<p className={styles.userModule}>{user?.course_module}</p>
-				</div>
-			</section>
-		</>
-	);
+  return (
+    <>
+      <section className={styles.container}>
+        <div className={styles.subContainer}>
+          <h1 className={styles.helloUser}>Olá, {user?.name}</h1>
+          <p className={styles.userModule}>
+            {user?.course_module}
+          </p>
+        </div>
+      </section>
+    </>
+  );
 };

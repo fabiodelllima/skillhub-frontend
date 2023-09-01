@@ -6,20 +6,23 @@ import { useContext } from 'react';
 import { UserContext } from '../../../providers/UserContext';
 
 export const Navbar = ({ buttonText }) => {
-	const { userLogout } = useContext(UserContext);
+  const { userLogout } = useContext(UserContext);
 
-	return (
-		<header className={styles.header}>
-			<div className={styles.container}>
-				<div className={styles.imgContainer}>
-					<img src={Logo} alt='Logo' />
-				</div>
-				<Link to='/'>
-					<button className={styles.buttonHeader} onClick={userLogout}>
-						{buttonText}
-					</button>
-				</Link>
-			</div>
-		</header>
-	);
+  return (
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <div className={styles.imgContainer}>
+          <img src={Logo} alt='Logo' />
+        </div>
+        <Link to='/'>
+          <button
+            className={styles.buttonHeader}
+            onClick={userLogout}
+          >
+            {buttonText}
+          </button>
+        </Link>
+      </div>
+    </header>
+  );
 };
