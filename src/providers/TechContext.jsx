@@ -33,9 +33,8 @@ export const TechProvider = ({ children }) => {
         },
       });
 
-      console.table(data);
       navigate('/user');
-      setTechList({ ...techList, newTech });
+      setTechList([...techList, data]);
     } catch (error) {
       console.log(error);
     }
@@ -52,7 +51,6 @@ export const TechProvider = ({ children }) => {
           },
         });
 
-        console.table(data);
         setTechList(data.techs);
       } catch (error) {
         console.log(error);
@@ -83,7 +81,6 @@ export const TechProvider = ({ children }) => {
         }
       });
 
-      console.log('ATUALIZADO:', data);
       setTechList(newTechList);
     } catch (error) {
       console.log(error);
