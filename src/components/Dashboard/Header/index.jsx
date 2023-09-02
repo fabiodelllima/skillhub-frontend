@@ -6,15 +6,13 @@ export const Header = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <>
-      <section className={styles.container}>
-        <div className={styles.subContainer}>
-          <h1 className={styles.helloUser}>Olá, {user?.name}</h1>
-          <p className={styles.userModule}>
-            {user?.course_module}
-          </p>
-        </div>
-      </section>
-    </>
+    <header className={styles.container}>
+      <div className={styles.subContainer}>
+        <h1 className={styles.helloUser}>Olá, {user?.name}</h1>
+        <p className={styles.userModule}>
+          {user?.course_module}
+        </p>
+      </div>
+    </header>
   );
 };
