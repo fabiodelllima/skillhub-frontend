@@ -9,7 +9,7 @@ export const Navbar = ({ buttonText }) => {
   const { userLogout } = useContext(UserContext);
 
   return (
-    <header className={styles.header}>
+    <nav className={styles.header}>
       <div className={styles.container}>
         <div className={styles.imgContainer}>
           <img src={Logo} alt='Logo' />
@@ -23,6 +23,6 @@ export const Navbar = ({ buttonText }) => {
           </button>
         </Link>
       </div>
-    </header>
+    </nav>
   );
 };
