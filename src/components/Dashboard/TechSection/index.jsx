@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { TechCard } from './TechCard';
 import styles from './style.module.scss';
 import { CreateTechModal } from './CreateTechModal';
@@ -6,8 +6,8 @@ import { TechContext } from '../../../providers/TechContext';
 import { EditTechModal } from './EditTechModal';
 
 export const TechSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const { editTech, techList } = useContext(TechContext);
+  const { isVisible, setIsVisible } = useContext(TechContext);
 
   const handleAddTechBtnClick = () => {
     setIsVisible(true);

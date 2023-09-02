@@ -7,6 +7,7 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [techList, setTechList] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ export const UserProvider = ({ children }) => {
       setLoading(true);
       const { data } = await api.post('/sessions', formData);
       setUser(data.user);
+      setTechList(data.user.techs);
       localStorage.setItem('@USERID', data.user.id);
       localStorage.setItem('@TOKEN', data.token);
       reset();
@@ -67,6 +69,7 @@ export const UserProvider = ({ children }) => {
           },
         });
         setUser(data);
+        setTechList(data.techs);
       } catch (error) {
         console.log(error);
       } finally {
@@ -87,6 +90,8 @@ export const UserProvider = ({ children }) => {
         userLogout,
         userLogin,
         userRegister,
+        techList,
+        setTechList,
       }}
     >
       {children}

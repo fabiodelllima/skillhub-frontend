@@ -8,13 +8,15 @@ import {
 import { api } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from './UserContext';
+import { toast } from 'react-toastify';
 
 export const TechContext = createContext({});
 
 export const TechProvider = ({ children }) => {
   const { user } = useContext(UserContext);
-  const [techList, setTechList] = useState([]);
+  const { techList, setTechList } = useContext(UserContext);
   const [editTech, setEditTech] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
 
   const createTech = async (formData) => {
@@ -36,8 +38,17 @@ export const TechProvider = ({ children }) => {
       navigate('/user');
       setTechList([...techList, data]);
     } catch (error) {
+      if (
+        error.response.data.message ===
+        'User Already have this technology created you can only update it'
+      ) {
+        toast.error('Tecnologia já cadastrada');
+      } else {
+        toast.error('Houve um erro');
+      }
       console.log(error);
     }
+    setIsVisible(null);
   };
 
   useEffect(() => {
@@ -117,6 +128,8 @@ export const TechProvider = ({ children }) => {
         setEditTech,
         updateTech,
         deleteTech,
+        isVisible,
+        setIsVisible,
       }}
     >
       {children}
