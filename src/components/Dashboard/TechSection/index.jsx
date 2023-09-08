@@ -7,14 +7,15 @@ import { EditTechModal } from './EditTechModal';
 
 export const TechSection = () => {
   const { editTech, techList } = useContext(TechContext);
-  const { isVisible, setIsVisible } = useContext(TechContext);
+  const { modalIsVisible, setModalIsVisible } =
+    useContext(TechContext);
 
   const handleAddTechBtnClick = () => {
-    setIsVisible(true);
+    setModalIsVisible(true);
   };
 
   const handleCloseModal = () => {
-    setIsVisible(false);
+    setModalIsVisible(false);
   };
 
   return (
@@ -36,7 +37,7 @@ export const TechSection = () => {
         </ul>
       </div>
 
-      {isVisible ? (
+      {modalIsVisible ? (
         <CreateTechModal onClose={handleCloseModal} />
       ) : null}
 
