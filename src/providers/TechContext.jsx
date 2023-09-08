@@ -48,7 +48,7 @@ export const TechProvider = ({ children }) => {
       }
       console.log(error);
     }
-    setIsVisible(null);
+    setIsVisible(false);
   };
 
   useEffect(() => {
