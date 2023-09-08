@@ -1,7 +1,7 @@
 import './styles/index.scss';
-import { RoutesMain } from './routes';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import { RoutesMain } from './routes';
 import { useContext } from 'react';
 import { UserContext } from './providers/UserContext';
 import { Loading } from './components/Loading';
