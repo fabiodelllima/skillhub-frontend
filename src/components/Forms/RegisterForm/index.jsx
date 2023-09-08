@@ -1,10 +1,10 @@
 import styles from './style.module.scss';
 import { useForm } from 'react-hook-form';
-import { Input } from '../Input';
-import { Select } from '../Select';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registerFormSchema } from './registerFormSchema';
 import { useContext, useState } from 'react';
+import { Input } from '../Input';
+import { Select } from '../Select';
 import { UserContext } from '../../../providers/UserContext';
 
 export const RegisterForm = () => {
@@ -17,7 +17,6 @@ export const RegisterForm = () => {
   });
 
   const [loading, setLoading] = useState(false);
-
   const { userRegister } = useContext(UserContext);
 
   const submit = (formData) => {
