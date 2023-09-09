@@ -2,6 +2,7 @@
 
 .header {
   width: 100%;
+  padding: 0 20px;
 
   .container {
     display: flex;
@@ -10,16 +11,26 @@
     align-items: center;
     width: 100%;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 0 10px 20px;
+
+    .logo {
+      @extend .logo;
+    }
 
     .buttonHeader {
       @extend .btn-disabled-reverse;
     }
+  }
+}
 
-    @media screen and (min-width: 600px) {
-      max-width: 400px;
+@media screen and (min-width: 600px) {
+  .header {
+    width: 100%;
+    margin: 0 auto;
+
+    .container {
+      width: 450px;
       margin: 0 auto;
-      padding: 40px 0;
     }
   }
 }
