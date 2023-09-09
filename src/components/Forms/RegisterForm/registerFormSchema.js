@@ -10,7 +10,7 @@ export const registerFormSchema = z
     password: z
       .string()
       .nonempty('A senha é obrigatória')
-      .min(8, 'A senha deve conter 8 caracteres')
+      .min(8, 'A senha deve conter pelo menos 8 caracteres')
       .regex(
         /[A-Z]+/,
         'A senha deve conter uma letra minúscula e uma maiúscula'
