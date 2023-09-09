@@ -1,6 +1,6 @@
 import '../../../../styles/index.scss';
 import styles from './style.module.scss';
-import Logo from '../../../../assets/Logo.svg';
+import Logo from '../../../../assets/Logo.png';
 import { Link } from 'react-router-dom';
 
 export const RegisterHeader = ({ buttonText, userLogout }) => {
@@ -8,7 +8,7 @@ export const RegisterHeader = ({ buttonText, userLogout }) => {
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.imgContainer}>
-          <img src={Logo} alt='Logo' />
+          <img className={styles.logo} src={Logo} alt='Logo' />
         </div>
         <Link to='/'>
           <button

@@ -1,5 +1,5 @@
-import { useContext } from 'react';
 import styles from './style.module.scss';
+import { useContext } from 'react';
 import { UserContext } from '../../../providers/UserContext';
 
 export const Header = () => {

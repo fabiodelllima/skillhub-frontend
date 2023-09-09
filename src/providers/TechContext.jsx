@@ -16,7 +16,7 @@ export const TechProvider = ({ children }) => {
   const { user } = useContext(UserContext);
   const { techList, setTechList } = useContext(UserContext);
   const [editTech, setEditTech] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
   const navigate = useNavigate();
 
   const createTech = async (formData) => {
@@ -48,7 +48,7 @@ export const TechProvider = ({ children }) => {
       }
       console.log(error);
     }
-    setIsVisible(null);
+    setModalIsVisible(false);
   };
 
   useEffect(() => {
@@ -128,8 +128,8 @@ export const TechProvider = ({ children }) => {
         setEditTech,
         updateTech,
         deleteTech,
-        isVisible,
-        setIsVisible,
+        modalIsVisible,
+        setModalIsVisible,
       }}
     >
       {children}

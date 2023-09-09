@@ -5,7 +5,6 @@ import { UserPage } from '../pages/UserPage';
 import { ErrorPage } from '../pages/ErrorPage';
 import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
-import { TechProvider } from '../providers/TechContext';
 
 export const RoutesMain = () => {
   return (

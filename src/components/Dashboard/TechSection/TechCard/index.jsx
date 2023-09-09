@@ -2,7 +2,6 @@ import styles from './style.module.scss';
 import EditIcon from '../../../../assets/EditIcon.svg';
 import DeleteIcon from '../../../../assets/DeleteIcon.svg';
 import { useContext } from 'react';
-
 import { TechContext } from '../../../../providers/TechContext';
 
 export const TechCard = ({ tech }) => {

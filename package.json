@@ -1,7 +1,7 @@
 {
-  "name": "m3-s4-kenziehub-fabiodelllima",
+  "name": "skillhub",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
