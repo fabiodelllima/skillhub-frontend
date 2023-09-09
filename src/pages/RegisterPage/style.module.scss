@@ -1,8 +1,10 @@
 .main {
-  padding: 0 20px 40px 20px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 10px;
 
   @media screen and (min-width: 600px) {
-    width: 800px;
-    margin: 0 auto;
+    width: 450px;
+    padding-bottom: 40px;
   }
 }
