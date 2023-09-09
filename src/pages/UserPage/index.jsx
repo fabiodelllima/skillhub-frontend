@@ -6,9 +6,7 @@ export const UserPage = () => {
   return (
     <>
       <Navbar buttonText='Sair' />
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main>
         <TechSection />
       </main>
